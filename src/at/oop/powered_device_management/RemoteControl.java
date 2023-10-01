@@ -19,8 +19,17 @@ class RemoteControl extends BatteryPoweredDevice {
 		return controlledDevices.remove(removedDevice);
 	}
 
+	// TO DO: Add methods for setChannel (one device, all devices)
+	
+	public boolean remoteIncreaseVolume(BroadcastReceiver ControlledDevice) {
+		return ControlledDevice.increaseRemoteVolume();
+	}
+	
+	public boolean remoteIncreaseVolumeAllDevices(BroadcastReceiver ControlledDevice) {
+		ControlledDevice.increaseVolume();
+	}
+	
 	// TO DO: Add methods for volume (increase / decrease one device, all devices)
-	// TO DO: Add methods for setChannle (one device, all devices)
 	
 	@Override
 	public String toString() {

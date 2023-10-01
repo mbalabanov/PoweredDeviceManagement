@@ -11,19 +11,23 @@ class BroadcastReceiver extends GridPoweredDevice implements RemoteControllable 
 		this.volume = volume;
 	}
 	
-	public void increaseVolume() {
+	public boolean increaseVolume() {
 		if (volume <= 100) {
 			volume++;
+			return true;
 		} else {
 			System.out.println("The volume is already set to MAXIMUM level.");
+			return false;
 		}
 	}
 	
-	public void decreaseVolume() {
+	public boolean decreaseVolume() {
 		if (volume >= 0) {
 			volume--;
+			return true;
 		} else {
 			System.out.println("The volume is already set to MINIMUM level.");
+			return false;
 		}
 	}
 
@@ -45,6 +49,14 @@ class BroadcastReceiver extends GridPoweredDevice implements RemoteControllable 
 	
 	public void remotePowerOff() {
 		powerOff();
+	}
+	
+	public void remoteIncreaseVolume() {
+		increaseVolume();
+	}
+	
+	public void remoteDecreaseVolume() {
+		increaseVolume();
 	}
 	
 }
