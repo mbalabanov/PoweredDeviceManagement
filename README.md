@@ -21,4 +21,4 @@ The GridPoweredDeviceManager can power multiple or all grid-powered devices on a
 The tests are defined in `main` in the class `DeviceTest`. Execute `DeviceTest` to run through all the tests.
 
 ## UML Class Diagram
-![Device Manager UML](DevicesUML.png)
+![Device Manager UML](DevicesUML1.png)
