@@ -16,4 +16,19 @@ class BatteryPoweredDevice extends PoweredDevice {
 	public void chargeBatteryLevel() {
 		batteryLevel = 100;
 	}
+	
+	public void depleteBattery(int usage) {
+		if (batteryLevel >= usage) {
+			batteryLevel = usage;
+		}
+	}
+	
+	public boolean checkBatteryEmpty() {
+		if (getBatteryLevel() <= 0) {
+			System.out.println("*** The battery is empty!\n");
+			powerOff();
+			return true;
+		}
+		return false;
+	}
 }

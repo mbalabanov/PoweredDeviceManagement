@@ -4,7 +4,7 @@ class DeviceTest {
 
 	public static void main(String[] args) {
 		
-		// Tests for CoffeeMaker - Individual
+		// Tests for CoffeeMaker - Individual Device
 		CoffeeMaker firstCoffeeMaker = new CoffeeMaker("Nespresso Ravioli", true, true, true, 100, 100, true);
 
 		System.out.println("New CoffeeMaker with initial values.");
@@ -40,7 +40,7 @@ class DeviceTest {
 		System.out.println(firstCoffeeMaker);
 
 
-		// Tests for TableLamp - Individual
+		// Tests for TableLamp - Individual Device
 		System.out.println("* * * *");
 		System.out.println("New TableLamp with initial values.");
 		TableLamp firstTableLamp = new TableLamp("Ikea Lindby", true, true, true, 0);
@@ -73,7 +73,7 @@ class DeviceTest {
 		firstTableLamp.increaseBrightness();
 		System.out.println(firstTableLamp);
 
-		// Tests for Radio - Individual
+		// Tests for Radio - Individual Device
 		System.out.println("* * * *");
 		System.out.println("New Radio with initial values.");
 		Radio firstRadio = new Radio("Sony WaveRider", true, true, true, 10, 4);
@@ -94,7 +94,7 @@ class DeviceTest {
 		System.out.println(firstRadio);
 		
 		
-		// Tests for Television - Individual
+		// Tests for Television - Individual Device
 		System.out.println("* * * *");
 		System.out.println("New Television with initial values.");
 		Television firstTelevision = new Television("LG 546", true, true, true, 6, 7, 8);
@@ -112,7 +112,48 @@ class DeviceTest {
 		System.out.println("Setting TV channel to 5.");
 		firstTelevision.setChannel(5);
 		System.out.println(firstTelevision);
-				
+
+		// Tests for RemoteControl - Individual and Multiple Devices
+		System.out.println("* * * *");
+		System.out.println("New RemoteControl with initial values.");
+		RemoteControl firstRemote = new RemoteControl("UnversalBeam", true, 100);
+		System.out.println(firstRemote);
+		
+		System.out.println("Television and radio added to controlledDevices.");
+		firstRemote.addDevice(firstTelevision);
+		firstRemote.addDevice(firstRadio);
+		System.out.println(firstRemote);
+		
+		System.out.println("Increase volume of radio by two using the remote control.");
+		System.out.println("Original radio volume: " + firstRadio.getVolume());
+		firstRemote.remoteIncreaseVolume(firstRadio);
+		firstRemote.remoteIncreaseVolume(firstRadio);
+		System.out.println("Increased radio volume: " + firstRadio.getVolume() + "\n");
+		
+		System.out.println("Decrease volume of television using the remote control.");
+		System.out.println("Original TV volume: " + firstTelevision.getVolume());
+		firstRemote.remoteDecreaseVolume(firstTelevision);
+		System.out.println("Increased TV volume: " + firstTelevision.getVolume() + "\n");
+		
+		System.out.println("Set channel on television to 8 using the remote control.");
+		System.out.println("Original TV channel: " + firstTelevision.getChannel());
+		firstRemote.setChannel(firstTelevision, 8);
+		System.out.println("Changed TV channel: " + firstTelevision.getChannel() + "\n");
+		
+		System.out.println("Set channel to 0 on both devices using the remote control.");
+		System.out.println("Original TV channel: " + firstTelevision.getChannel());
+		System.out.println("Original Radio channel: " + firstRadio.getChannel());
+		firstRemote.setChannelAllDevices(0);
+		System.out.println("Changed TV channel: " + firstTelevision.getChannel());
+		System.out.println("Changed Radio channel: " + firstRadio.getChannel() + "\n");
+		
+		System.out.println("Increase volume by 3 on both devices using the remote control.");
+		System.out.println("Original TV volume: " + firstTelevision.getVolume() + ". Original Radio volume: " + firstRadio.getVolume());
+		firstRemote.remoteIncreaseVolumeAllDevices();
+		firstRemote.remoteIncreaseVolumeAllDevices();
+		firstRemote.remoteIncreaseVolumeAllDevices();
+		System.out.println("Changed TV volume: " + firstTelevision.getVolume() + ". Changed Radio volume: " + firstRadio.getVolume() + "\n");
+
 	}
 
 }

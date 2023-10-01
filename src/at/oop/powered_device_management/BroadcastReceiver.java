@@ -51,12 +51,12 @@ class BroadcastReceiver extends GridPoweredDevice implements RemoteControllable 
 		powerOff();
 	}
 	
-	public void remoteIncreaseVolume() {
-		increaseVolume();
+	public boolean remoteIncreaseVolume() {
+		return increaseVolume();
 	}
 	
-	public void remoteDecreaseVolume() {
-		increaseVolume();
+	public boolean remoteDecreaseVolume() {
+		return increaseVolume();
 	}
 	
 }
