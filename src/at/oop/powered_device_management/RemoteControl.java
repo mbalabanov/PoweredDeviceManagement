@@ -26,6 +26,7 @@ class RemoteControl extends BatteryPoweredDevice {
 		for (BroadcastReceiver controlledDevice : controlledDevices) {
 			deviceList += controlledDevice.getName() + " (" + controlledDevice.getClass().getSimpleName() + "), ";
 		}
+		depleteBattery(1);
 		return deviceList;
 	}
 	
@@ -44,6 +45,7 @@ class RemoteControl extends BatteryPoweredDevice {
 		for (BroadcastReceiver DeviceToSet : controlledDevices) {
 			DeviceToSet.remoteIncreaseVolume();
 		}
+		depleteBattery(5);
 	}
 	
 	public void remoteDecreaseVolumeAllDevices() {
@@ -53,11 +55,13 @@ class RemoteControl extends BatteryPoweredDevice {
 				DeviceToSet.remoteDecreaseVolume();
 			}	
 		}
+		depleteBattery(5);
 	}
 	
 	public void setChannel(BroadcastReceiver DeviceToSet, int channel) {
 		if (checkBatteryEmpty()) return;
 		DeviceToSet.setChannel(channel);
+		depleteBattery(1);
 	}
 	
 	public void setChannelAllDevices(int channel) {
@@ -67,6 +71,7 @@ class RemoteControl extends BatteryPoweredDevice {
 				DeviceToSet.setChannel(channel);
 			}	
 		}
+		depleteBattery(5);
 	}
 	
 	public void remotePowerOn(BroadcastReceiver DeviceToSet) {
@@ -86,6 +91,7 @@ class RemoteControl extends BatteryPoweredDevice {
 				DeviceToSet.powerOn();
 			}	
 		}
+		depleteBattery(5);
 	}
 	
 	public void remotePowerOffAllDevices() {
@@ -95,6 +101,7 @@ class RemoteControl extends BatteryPoweredDevice {
 				DeviceToSet.powerOff();
 			}	
 		}
+		depleteBattery(5);
 	}
 	
 	@Override

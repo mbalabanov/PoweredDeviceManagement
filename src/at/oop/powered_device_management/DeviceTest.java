@@ -127,6 +127,9 @@ class DeviceTest {
 		firstRemote.addDevice(firstRadio);
 		System.out.println(firstRemote);
 		
+		System.out.println("RemoteControl is a battery-powered device with the battery depleting during operations. This is the present state of the battery:");
+		System.out.println(firstRemote.getBatteryLevel() + "%\n");
+		
 		System.out.println("Increase volume of radio by two using the remote control.");
 		System.out.println("Original radio volume: " + firstRadio.getVolume());
 		firstRemote.remoteIncreaseVolume(firstRadio);
@@ -174,6 +177,9 @@ class DeviceTest {
 		firstRemote.remotePowerOnAllDevices();
 		System.out.println(firstTelevision);
 		System.out.println(firstRadio);
+		
+		System.out.println("The RemoteControl has run through a number of operations. The battery has depleted to the following state:");
+		System.out.println(firstRemote.getBatteryLevel() + "%\n");
 
 		
 		System.out.println("\n* * * *");
@@ -195,6 +201,17 @@ class DeviceTest {
 		System.out.println("Power off all devices.");
 		firstDeviceManager.powerOffAllDevices();
 		System.out.println("New changed power state of each devices:");
+		System.out.println("CoffeMaker powered: " + firstCoffeeMaker.getPoweredState() + "\nTable Lamp powered: " + firstTableLamp.getPoweredState() + "\nRadio powered: " + firstRadio.getPoweredState() + "\nTelevision powered: " + firstTelevision.getPoweredState() + "\n");
+		
+		System.out.println("Remove two devices to DeviceManager.");
+		firstDeviceManager.removeDevice(firstCoffeeMaker);
+		firstDeviceManager.removeDevice(firstRadio);
+		System.out.println("The CoffeeMaker and the Radio should have been removed from the list below:");
+		System.out.println(firstDeviceManager.getAllManagedDevices() + "\n");
+		
+		System.out.println("Power on all remainng devices (only TableLamp and Televison).");
+		firstDeviceManager.powerOnAllDevices();
+		System.out.println("New changed power state of each devices (removed devices are left here for comparison, they are still powered off):");
 		System.out.println("CoffeMaker powered: " + firstCoffeeMaker.getPoweredState() + "\nTable Lamp powered: " + firstTableLamp.getPoweredState() + "\nRadio powered: " + firstRadio.getPoweredState() + "\nTelevision powered: " + firstTelevision.getPoweredState() + "\n");
 		
 	}

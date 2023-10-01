@@ -19,7 +19,7 @@ class BatteryPoweredDevice extends PoweredDevice {
 	
 	public void depleteBattery(int usage) {
 		if (batteryLevel >= usage) {
-			batteryLevel = usage;
+			batteryLevel -= usage;
 		}
 	}
 	
