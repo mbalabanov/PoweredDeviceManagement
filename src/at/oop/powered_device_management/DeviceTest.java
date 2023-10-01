@@ -4,7 +4,7 @@ class DeviceTest {
 
 	public static void main(String[] args) {
 		
-		// Tests for CoffeeMaker - Individual Device
+		System.out.println("\nTests for CoffeeMaker - Individual Device");
 		CoffeeMaker firstCoffeeMaker = new CoffeeMaker("Nespresso Ravioli", true, true, true, 100, 100, true);
 
 		System.out.println("New CoffeeMaker with initial values.");
@@ -40,8 +40,8 @@ class DeviceTest {
 		System.out.println(firstCoffeeMaker);
 
 
-		// Tests for TableLamp - Individual Device
-		System.out.println("* * * *");
+		System.out.println("\n* * * *");
+		System.out.println("Tests for TableLamp - Individual Device");
 		System.out.println("New TableLamp with initial values.");
 		TableLamp firstTableLamp = new TableLamp("Ikea Lindby", true, true, true, 0);
 		System.out.println(firstTableLamp);
@@ -73,8 +73,10 @@ class DeviceTest {
 		firstTableLamp.increaseBrightness();
 		System.out.println(firstTableLamp);
 
-		// Tests for Radio - Individual Device
-		System.out.println("* * * *");
+
+		
+		System.out.println("\n* * * *");
+		System.out.println("Tests for Radio - Individual Device");
 		System.out.println("New Radio with initial values.");
 		Radio firstRadio = new Radio("Sony WaveRider", true, true, true, 10, 4);
 		System.out.println(firstRadio);
@@ -94,8 +96,8 @@ class DeviceTest {
 		System.out.println(firstRadio);
 		
 		
-		// Tests for Television - Individual Device
-		System.out.println("* * * *");
+		System.out.println("\n* * * *");
+		System.out.println("Tests for Television - Individual Device.");
 		System.out.println("New Television with initial values.");
 		Television firstTelevision = new Television("LG 546", true, true, true, 6, 7, 8);
 		System.out.println(firstTelevision);
@@ -113,8 +115,9 @@ class DeviceTest {
 		firstTelevision.setChannel(5);
 		System.out.println(firstTelevision);
 
-		// Tests for RemoteControl - Individual and Multiple Devices
-		System.out.println("* * * *");
+
+		System.out.println("\n* * * *");
+		System.out.println("Tests for RemoteControl - Individual and Multiple Devices.");
 		System.out.println("New RemoteControl with initial values.");
 		RemoteControl firstRemote = new RemoteControl("UnversalBeam", true, 100);
 		System.out.println(firstRemote);
@@ -153,7 +156,47 @@ class DeviceTest {
 		firstRemote.remoteIncreaseVolumeAllDevices();
 		firstRemote.remoteIncreaseVolumeAllDevices();
 		System.out.println("Changed TV volume: " + firstTelevision.getVolume() + ". Changed Radio volume: " + firstRadio.getVolume() + "\n");
+		
+		System.out.println("Power off Television using remote control");
+		firstRemote.remotePowerOff(firstTelevision);
+		System.out.println(firstTelevision);
+		
+		System.out.println("Power Television back on using remote control");
+		firstRemote.remotePowerOn(firstTelevision);
+		System.out.println(firstTelevision);
+		
+		System.out.println("Power off all controlled devices using remote control");
+		firstRemote.remotePowerOffAllDevices();
+		System.out.println(firstTelevision);
+		System.out.println(firstRadio);
+		
+		System.out.println("Power on all controlled devices using remote control");
+		firstRemote.remotePowerOnAllDevices();
+		System.out.println(firstTelevision);
+		System.out.println(firstRadio);
 
+		
+		System.out.println("\n* * * *");
+		System.out.println("Tests for GridPoweredDevicesManager - Individual and Multiple Devices.");
+		System.out.println("New DeviceManager with initial values.");
+		GridPoweredDevicesManager firstDeviceManager = new GridPoweredDevicesManager("Director");
+		System.out.println(firstDeviceManager);
+		
+		System.out.println("Add all four devices to DeviceManager.");
+		firstDeviceManager.addDevice(firstCoffeeMaker);
+		firstDeviceManager.addDevice(firstTableLamp);
+		firstDeviceManager.addDevice(firstTelevision);
+		firstDeviceManager.addDevice(firstRadio);
+		System.out.println(firstDeviceManager);
+		
+		System.out.println("Current power state of each devices:");
+		System.out.println("CoffeMaker powered: " + firstCoffeeMaker.getPoweredState() + "\nTable Lamp powered: " + firstTableLamp.getPoweredState() + "\nRadio powered: " + firstRadio.getPoweredState() + "\nTelevision powered: " + firstTelevision.getPoweredState() + "\n");
+		
+		System.out.println("Power off all devices.");
+		firstDeviceManager.powerOffAllDevices();
+		System.out.println("New changed power state of each devices:");
+		System.out.println("CoffeMaker powered: " + firstCoffeeMaker.getPoweredState() + "\nTable Lamp powered: " + firstTableLamp.getPoweredState() + "\nRadio powered: " + firstRadio.getPoweredState() + "\nTelevision powered: " + firstTelevision.getPoweredState() + "\n");
+		
 	}
 
 }

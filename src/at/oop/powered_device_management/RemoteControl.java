@@ -69,6 +69,34 @@ class RemoteControl extends BatteryPoweredDevice {
 		}
 	}
 	
+	public void remotePowerOn(BroadcastReceiver DeviceToSet) {
+		if (checkBatteryEmpty()) return;
+		DeviceToSet.powerOn();
+	}
+	
+	public void remotePowerOff(BroadcastReceiver DeviceToSet) {
+		if (checkBatteryEmpty()) return;
+		DeviceToSet.powerOff();
+	}
+	
+	public void remotePowerOnAllDevices() {
+		if (checkBatteryEmpty()) return;
+		if (!controlledDevices.isEmpty()) {
+			for (BroadcastReceiver DeviceToSet : controlledDevices) {
+				DeviceToSet.powerOn();
+			}	
+		}
+	}
+	
+	public void remotePowerOffAllDevices() {
+		if (checkBatteryEmpty()) return;
+		if (!controlledDevices.isEmpty()) {
+			for (BroadcastReceiver DeviceToSet : controlledDevices) {
+				DeviceToSet.powerOff();
+			}	
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return "RemoteControl " + getName() + " (Powered on: " + getPoweredState() + "; battery level: " + getBatteryLevel() + "%)\nControlledDevices: " + getControlledDevices() + "\n";
