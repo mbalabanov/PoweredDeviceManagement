@@ -40,7 +40,7 @@ class DeviceTest {
 		System.out.println(firstCoffeeMaker);
 
 
-		System.out.println("\n* * * *");
+		System.out.println("\n\n* * * *");
 		System.out.println("Tests for TableLamp - Individual Device");
 		System.out.println("New TableLamp with initial values.");
 		TableLamp firstTableLamp = new TableLamp("Ikea Lindby", true, true, true, 0);
@@ -73,9 +73,8 @@ class DeviceTest {
 		firstTableLamp.increaseBrightness();
 		System.out.println(firstTableLamp);
 
-
 		
-		System.out.println("\n* * * *");
+		System.out.println("\n\n* * * *");
 		System.out.println("Tests for Radio - Individual Device");
 		System.out.println("New Radio with initial values.");
 		Radio firstRadio = new Radio("Sony WaveRider", true, true, true, 10, 4);
@@ -96,7 +95,7 @@ class DeviceTest {
 		System.out.println(firstRadio);
 		
 		
-		System.out.println("\n* * * *");
+		System.out.println("\n\n* * * *");
 		System.out.println("Tests for Television - Individual Device.");
 		System.out.println("New Television with initial values.");
 		Television firstTelevision = new Television("LG 546", true, true, true, 6, 7, 8);
@@ -116,7 +115,7 @@ class DeviceTest {
 		System.out.println(firstTelevision);
 
 
-		System.out.println("\n* * * *");
+		System.out.println("\n\n* * * *");
 		System.out.println("Tests for RemoteControl - Individual and Multiple Devices.");
 		System.out.println("New RemoteControl with initial values.");
 		RemoteControl firstRemote = new RemoteControl("UnversalBeam", true, 100);
@@ -182,7 +181,7 @@ class DeviceTest {
 		System.out.println(firstRemote.getBatteryLevel() + "%\n");
 
 		
-		System.out.println("\n* * * *");
+		System.out.println("\n\n* * * *");
 		System.out.println("Tests for GridPoweredDevicesManager - Individual and Multiple Devices.");
 		System.out.println("New DeviceManager with initial values.");
 		GridPoweredDevicesManager firstDeviceManager = new GridPoweredDevicesManager("Director");
@@ -195,12 +194,12 @@ class DeviceTest {
 		firstDeviceManager.addDevice(firstRadio);
 		System.out.println(firstDeviceManager);
 		
-		System.out.println("Current power state of each devices:");
+		System.out.println("Current power state of each device:");
 		System.out.println("CoffeMaker powered: " + firstCoffeeMaker.getPoweredState() + "\nTable Lamp powered: " + firstTableLamp.getPoweredState() + "\nRadio powered: " + firstRadio.getPoweredState() + "\nTelevision powered: " + firstTelevision.getPoweredState() + "\n");
 		
 		System.out.println("Power off all devices.");
 		firstDeviceManager.powerOffAllDevices();
-		System.out.println("New changed power state of each devices:");
+		System.out.println("New changed power state of each device:");
 		System.out.println("CoffeMaker powered: " + firstCoffeeMaker.getPoweredState() + "\nTable Lamp powered: " + firstTableLamp.getPoweredState() + "\nRadio powered: " + firstRadio.getPoweredState() + "\nTelevision powered: " + firstTelevision.getPoweredState() + "\n");
 		
 		System.out.println("Remove two devices to DeviceManager.");
@@ -211,9 +210,12 @@ class DeviceTest {
 		
 		System.out.println("Power on all remainng devices (only TableLamp and Televison).");
 		firstDeviceManager.powerOnAllDevices();
-		System.out.println("New changed power state of each devices (removed devices are left here for comparison, they are still powered off):");
+		System.out.println("New changed power state of each device (removed devices are left here for comparison, they are still powered off):");
 		System.out.println("CoffeMaker powered: " + firstCoffeeMaker.getPoweredState() + "\nTable Lamp powered: " + firstTableLamp.getPoweredState() + "\nRadio powered: " + firstRadio.getPoweredState() + "\nTelevision powered: " + firstTelevision.getPoweredState() + "\n");
 		
+		
+		// TO DO: Combined tests for RemoteControl and DeviceManager
+
 	}
 
 }
